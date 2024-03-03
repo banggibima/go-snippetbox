@@ -6,21 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel='icon' href='../static/img/favicon.ico' type='image/x-icon'>
     <link rel="stylesheet" href="../static/css/output.css" />
-    <title>{{template "title" .}} - Snippetbox</title>
+    <title>{{template "title" .}} - go snippetbox</title>
   </head>
   <body>
-    <div class="mx-auto max-w-5xl">
+    <div class="mx-auto max-w-3xl">
       <div class="flex flex-col py-4 gap-8 h-screen">
-        <header class="flex flex-row justify-center items-center">
+        <header class="flex flex-row justify-center items-center py-8">
           <h1 class="text-3xl font-mono tracking-wide font-bold">
-            <a href="/">Snippetbox</a>
+            <a href="/">Go Snippetbox</a>
           </h1>
         </header>
         {{template "nav" .}}
         <main class="flex-grow">
           {{template "main" .}}
         </main>
-        <footer class="mt-auto">
+        <footer class="mt-auto pb-8">
           <p class="text-xs font-mono tracking-wide text-neutral-80">
             Powered by <a href="https://golang.org/" class="hover:text-cyan-600">Go</a>
           </p>
