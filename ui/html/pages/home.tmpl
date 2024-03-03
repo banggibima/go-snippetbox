@@ -7,7 +7,6 @@
     <table class="min-w-full divide-y divide-neutral-400">
       <thead>
         <tr>
-          <th scope="col" class="text-xs pb-2 font-mono font-medium tracking-normal text-neutral-800 text-left">ID</th>
           <th scope="col" class="text-xs pb-2 font-mono font-medium tracking-normal text-neutral-800 text-left">Title</th>
           <th scope="col" class="text-xs pb-2 font-mono font-medium tracking-normal text-neutral-800 text-left">Created</th>
           <th scope="col" class="text-xs pb-2 font-mono font-medium tracking-normal text-neutral-800 text-left"></th>
@@ -16,7 +15,6 @@
       <tbody class="divide-y divide-neutral-200">
         {{range .Snippets}}
         <tr>
-          <td class="text-xs py-2 font-mono font-medium tracking-normal text-neutral-800 text-left">#{{.ID}}</td>
           <td class="text-xs py-2 font-mono font-medium tracking-normal text-neutral-800 text-left">{{.Title}}</td>
           <td class="text-xs py-2 font-mono font-medium tracking-normal text-neutral-800 text-left">{{humanDate .Created}}</td>
           <td class="text-xs py-2 font-mono font-medium tracking-normal text-neutral-800 text-left">
