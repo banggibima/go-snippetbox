@@ -3,6 +3,27 @@
 {{define "main"}}
   <div class="flex flex-col gap-4">
     <h2 class="text-xl font-mono font-medium tracking-normal text-neutral-800">Latest Snippets</h2>
+    {{if .Snippets}}
+    <table class="min-w-full divide-y divide-neutral-400">
+      <thead>
+        <tr>
+          <th scope="col" class="text-xs pb-2 font-mono font-medium tracking-normal text-neutral-800 text-left">ID</th>
+          <th scope="col" class="text-xs pb-2 font-mono font-medium tracking-normal text-neutral-800 text-left">Title</th>
+          <th scope="col" class="text-xs pb-2 font-mono font-medium tracking-normal text-neutral-800 text-left">Created</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-neutral-200">
+        {{range .Snippets}}
+        <tr>
+          <td class="text-xs py-2 font-mono font-medium tracking-normal text-neutral-800 text-left">#{{.ID}}</td>
+          <td class="text-xs py-2 font-mono font-medium tracking-normal text-neutral-800 text-left"><a href='/snippet/view?id={{.ID}}'>{{.Title}}</td>
+          <td class="text-xs py-2 font-mono font-medium tracking-normal text-neutral-800 text-left">{{.Created}}</td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+    {{else}}
     <p class="text-xs font-mono font-medium tracking-wide text-neutral-800">There's nothing to see here yet!</p>
+    {{end}}
   </div>
 {{end}}
