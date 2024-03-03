@@ -1,20 +1,28 @@
-{{define "title"}}snippet #{{.Snippet.ID}}{{end}}
+{{define "title"}}snippet #{{.Snippet.ID}}{{end}} 
 
-{{define "main"}}
+{{define "main"}} 
   {{with .Snippet}}
   <div class="flex flex-col gap-32">
     <div class="flex flex-col gap-4">
       <div class="flex flex-row items-end gap-4">
-        <h2 class="text-xl font-mono font-medium tracking-normal text-neutral-800">{{.Title}}</h2>
-        <span class="text-base font-mono font-light tracking-wide text-neutral-200">#{{.ID}}</span>
+        <h2 class="text-xl font-mono font-medium tracking-normal text-neutral-800">
+          {{.Title}}
+        </h2>
+        <span class="text-base font-mono font-light tracking-wide text-neutral-400">
+          #{{.ID}}
+        </span>
       </div>
       <div class="flex flex-col gap-0">
-        <p class="text-xs font-mono font-medium tracking-wide text-neutral-800">{{.Content}}</p>
+        <p class="text-xs font-mono font-medium tracking-wide text-neutral-800">
+          {{.Content}}
+        </p>
       </div>
     </div>
     <div class="flex flex-row justify-between">
-      <time class="text-xs font-mono font-medium tracking-wide text-neutral-800">Created: {{humanDate .Created}}</time>
-      <time class="text-xs font-mono font-medium tracking-wide text-neutral-800">Expires: {{humanDate .Expires}}</time>
+      <time class="text-xs font-mono font-medium tracking-wide text-neutral-800">Created: {{humanDate .Created}}</time
+      >
+      <time class="text-xs font-mono font-medium tracking-wide text-neutral-800">Expires: {{humanDate .Expires}}</time
+      >
     </div>
   </div>
   {{end}}
