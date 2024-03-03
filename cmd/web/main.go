@@ -19,7 +19,6 @@ type application struct {
 
 func main() {
 	addr := flag.String("addr", ":4000", "HTTP network address")
-
 	dsn := flag.String("dsn", "root@/snippetbox?parseTime=true", "MySQL data source name")
 
 	flag.Parse()
@@ -36,7 +35,7 @@ func main() {
 	app := &application{
 		errorLog: errorLog,
 		infoLog:  infoLog,
-		snippets: &models.SnippetModel{},
+		snippets: &models.SnippetModel{DB: db},
 	}
 
 	srv := &http.Server{
