@@ -31,6 +31,11 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	app.render(w, http.StatusOK, "home.tmpl", data)
 }
 
+func (app *application) about(w http.ResponseWriter, r *http.Request) {
+	data := app.newTemplateData(r)
+	app.render(w, http.StatusOK, "about.tmpl", data)
+}
+
 func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 	params := httprouter.ParamsFromContext(r.Context())
 
@@ -98,21 +103,21 @@ func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request
 	http.Redirect(w, r, fmt.Sprintf("/snippet/view/%d", id), http.StatusSeeOther)
 }
 
-type userSignupForm struct {
+type userRegisterForm struct {
 	Name                string `form:"name"`
 	Email               string `form:"email"`
 	Password            string `form:"password"`
 	validator.Validator `form:"-"`
 }
 
-func (app *application) userSignup(w http.ResponseWriter, r *http.Request) {
+func (app *application) userRegister(w http.ResponseWriter, r *http.Request) {
 	data := app.newTemplateData(r)
-	data.Form = userSignupForm{}
+	data.Form = userRegisterForm{}
 	app.render(w, http.StatusOK, "register.tmpl", data)
 }
 
-func (app *application) userSignupPost(w http.ResponseWriter, r *http.Request) {
-	var form userSignupForm
+func (app *application) userRegisterPost(w http.ResponseWriter, r *http.Request) {
+	var form userRegisterForm
 
 	err := app.decodePostForm(r, &form)
 	if err != nil {
@@ -146,7 +151,7 @@ func (app *application) userSignupPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	app.sessionManager.Put(r.Context(), "flash", "Your signup was successful. Please log in.")
+	app.sessionManager.Put(r.Context(), "flash", "Your register was successful. Please log in.")
 
 	http.Redirect(w, r, "/user/login", http.StatusSeeOther)
 }

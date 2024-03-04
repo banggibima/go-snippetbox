@@ -1,7 +1,7 @@
 {{define "title"}}register{{end}}
 
 {{define "main"}}
-<form action="/user/signup" method="POST" class="flex flex-col" novalidate>
+<form action="/user/register" method="POST" class="flex flex-col" novalidate>
   <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
   <div class="flex flex-col gap-4">
     <div class="flex flex-col gap-2">
