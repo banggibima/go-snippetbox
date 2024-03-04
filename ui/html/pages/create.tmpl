@@ -1,17 +1,18 @@
 {{define "title"}}create a new snippet{{end}}
 
 {{define "main"}}
-<form action='/snippet/create' method='POST' class="flex flex-col">
+<form action="/snippet/create" method="POST" class="flex flex-col">
+  <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
   <div class="flex flex-col gap-4">
     <div class="flex flex-col gap-2">
       <div class="flex flex-col">
         <label class="text-xs font-mono font-medium">Title:</label>
       </div>
-      <div class="flex flex-col">
       {{with .Form.FieldErrors.title}}
+      <div class="flex flex-col">
         <label class="text-xs font-mono font-medium text-rose-600">{{.}}</label>
-      {{end}}
       </div>
+      {{end}}
       <div class="flex flex-col">
         <input type="text" name="title" value="{{.Form.Title}}" class="text-xs bg-neutral-100 tracking-wider px-3 py-2 rounded-xl focus:ring-0 focus:ring-offset-0 focus:outline-none hover:ring-0 active:ring-0 border border-neutral-200 focus:border-neutral-200">
       </div>
@@ -20,11 +21,11 @@
       <div class="flex flex-col">
         <label class="text-xs font-mono font-medium">Content:</label>
       </div>
-      <div class="flex flex-col">
       {{with .Form.FieldErrors.content}}
+      <div class="flex flex-col">
         <label class="text-xs font-mono font-medium text-rose-600">{{.}}</label>
-      {{end}}
       </div>
+      {{end}}
       <div class="flex flex-col">
         <textarea name="content" name="title" rows="5" class="text-xs bg-neutral-100 tracking-wider px-3 py-2 rounded-xl focus:ring-0 focus:ring-offset-0 focus:outline-none hover:ring-0 active:ring-0 border border-neutral-200 focus:border-neutral-200">
           {{.Form.Content}}
@@ -36,20 +37,22 @@
         <label class="text-xs font-mono font-medium">Deleted In:</label>
       </div>
       {{with .Form.FieldErrors.expires}}
+      <div class="flex flex-col">
         <label class="text-xs font-mono font-medium text-rose-600">{{.}}</label>
+      </div>
       {{end}}
-      <div class="flex flex-row gap-2">
+      <div class="flex flex-row gap-4">
         <div class="flex items-center gap-x-2">
           <input name="expires" type="radio" value="365" {{if (eq .Form.Expires 365)}}checked{{end}} class="h-4 w-4 border-neutral-400 text-neutral-600 focus:ring-neutral-600">
-          <label class="block text-xs font-medium leading-6 text-neutral-800">One Year</label>
+          <label class="block text-xs font-mono font-medium leading-6 text-neutral-800">One Year</label>
         </div>
         <div class="flex items-center gap-x-2">
           <input name="expires" type="radio" value="7" {{if (eq .Form.Expires 7)}}checked{{end}} class="h-4 w-4 border-neutral-400 text-neutral-600 focus:ring-neutral-600">
-          <label class="block text-xs font-medium leading-6 text-neutral-800">One Week</label>
+          <label class="block text-xs font-mono font-medium leading-6 text-neutral-800">One Week</label>
         </div>
         <div class="flex items-center gap-x-2">
           <input name="expires" type="radio" value="1" {{if (eq .Form.Expires 1)}}checked{{end}} class="h-4 w-4 border-neutral-400 text-neutral-600 focus:ring-neutral-600">
-          <label class="block text-xs font-medium leading-6 text-neutral-800">One Day</label>
+          <label class="block text-xs font-mono font-medium leading-6 text-neutral-800">One Day</label>
         </div>
       </div>
     </div>

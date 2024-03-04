@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel='icon' href='/static/img/favicon.ico' type='image/x-icon'>
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/static/css/output.css" />
     <title>{{template "title" .}} - go snippetbox</title>
   </head>
@@ -18,10 +18,17 @@
         </header>
         {{template "nav" .}}
         <main class="flex-grow">
-          {{template "main" .}}
+          <div class="flex flex-col gap-4">
+            {{with .Flash}}
+            <div class="flex flex-col justify-center items-center px-3 py-2 border rounded-xl border-neutral-200 bg-neutral-100">
+              <span class="text-xs font-mono tracking-wide text-neutral-800">{{.}}</span>
+            </div>
+            {{end}}
+            {{template "main" .}}
+          </div>
         </main>
         <footer class="mt-auto pb-8">
-          <p class="text-xs font-mono tracking-wide text-neutral-80">
+          <p class="text-xs font-mono tracking-wide text-neutral-800">
             Powered by <a href="https://golang.org/" class="hover:text-cyan-600">Go</a> in {{.CurrentYear}}
           </p>
         </footer>

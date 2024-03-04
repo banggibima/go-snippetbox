@@ -1,0 +1,56 @@
+{{define "title"}}register{{end}}
+
+{{define "main"}}
+<form action="/user/signup" method="POST" class="flex flex-col" novalidate>
+  <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+  <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-2">
+      <div class="flex flex-col">
+        <label class="text-xs font-mono font-medium">Name:</label>
+      </div>
+      {{with .Form.FieldErrors.name}}
+      <div class="flex flex-col">
+        <label class="text-xs font-mono font-medium text-rose-600">{{.}}</label>
+      </div>
+      {{end}}
+      <div class="flex flex-col">
+        <input type="text" name="name"  class="text-xs bg-neutral-100 tracking-wider px-3 py-2 rounded-xl focus:ring-0 focus:ring-offset-0 focus:outline-none hover:ring-0 active:ring-0 border border-neutral-200 focus:border-neutral-200">
+      </div>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="flex flex-col">
+        <label class="text-xs font-mono font-medium">Email:</label>
+      </div>
+      {{with .Form.FieldErrors.email}}
+      <div class="flex flex-col">
+        <label class="text-xs font-mono font-medium text-rose-600">{{.}}</label>
+      </div>
+      {{end}}
+      <div class="flex flex-col">
+        <input type="text" name="email"  class="text-xs bg-neutral-100 tracking-wider px-3 py-2 rounded-xl focus:ring-0 focus:ring-offset-0 focus:outline-none hover:ring-0 active:ring-0 border border-neutral-200 focus:border-neutral-200">
+      </div>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="flex flex-col">
+        <label class="text-xs font-mono font-medium">Password:</label>
+      </div>
+      {{with .Form.FieldErrors.password}}
+      <div class="flex flex-col">
+        <label class="text-xs font-mono font-medium text-rose-600">{{.}}</label>
+      </div>
+      {{end}}
+      <div class="flex flex-col">
+        <input type="password" name="password"  class="text-xs bg-neutral-100 tracking-wider px-3 py-2 rounded-xl focus:ring-0 focus:ring-offset-0 focus:outline-none hover:ring-0 active:ring-0 border border-neutral-200 focus:border-neutral-200">
+      </div>
+    </div>
+    <div class="flex flex-row gap-2">
+      <button
+        type="submit"
+        class="text-xs bg-neutral-100 tracking-wider px-3 py-2 rounded-xl focus:ring-0 focus:ring-offset-0 focus:outline-none hover:ring-0 active:ring-0 border border-neutral-200 focus:border-neutral-200"
+      >
+        Register
+      </button>
+    </div>
+  </div>
+</form>
+{{end}}

@@ -1,11 +1,22 @@
 {{define "nav"}}
 <nav>
   <div class="flex flex-row justify-between items-center">
-    <div class="flex flex-row gap-4">
-      <a href='/' class="text-xs font-mono font-medium tracking-wide text-neutral-800 underline underline-offset-8">Home</a>
-      <a href='/snippet/create' class="text-xs font-mono font-medium tracking-wide text-neutral-800 underline underline-offset-8">Create Snippet</a>
+    <div class="flex flex-row gap-4 items-center">
+      <a href="/" class="text-xs font-mono font-medium tracking-wide text-neutral-800 underline underline-offset-8">Home</a>
+      {{if .IsAuthenticated}}
+      <a href="/snippet/create" class="text-xs font-mono font-medium tracking-wide text-neutral-800 underline underline-offset-8">Create Snippet</a>
+      {{end}}
     </div>
-    <div class="flex flex-row gap-4">
+    <div class="flex flex-row gap-4 items-center">
+      {{if .IsAuthenticated}}
+      <form action="/user/logout" method="POST" class="flex gap-4 items-center">
+        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+        <button class="text-xs font-mono font-medium tracking-wide text-rose-800 underline underline-offset-8">Logout</button>
+      </form>
+      {{else}}
+      <a href="/user/login" class="text-xs font-mono font-medium tracking-wide text-neutral-800 underline underline-offset-8">Login</a>
+      <a href="/user/signup" class="text-xs font-mono font-medium tracking-wide text-neutral-800 underline underline-offset-8">Register</a>
+      {{end}}
     </div>
   </div>
 </nav>
